@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, ChevronDown, ChevronUp, Database, BarChart3, Activity } from 'lucide-react';
+import { ExternalLink, ChevronDown, ChevronUp, Database, BarChart3, Activity, Table } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 const projects = [
@@ -75,6 +75,30 @@ const projects = [
       { metric: '18%', label: 'potential cost reduction identified' },
     ],
     impact: 'Delivered actionable risk segmentation enabling hospitals to prioritize high-risk patients for follow-up care, with potential to reduce readmission-related costs by 18%.',
+  },
+  {
+    id: 'cafe',
+    badge: 'EXCEL',
+    title: 'Cafe Analytics Dashboard',
+    subtitle: 'Excel-Based Business Intelligence',
+    tags: ['Excel', 'Pivot Tables', 'KPI Analysis', 'Data Cleaning'],
+    icon: Table,
+    color: 'from-emerald-500 to-green-600',
+    liveSheet: 'https://docs.google.com/spreadsheets/d/1M9aOmB9KD4Q6fXpM5JKxun5t17uY0MwkEOT50Wdsi0I',
+    problem: 'A cafe chain with 20,000+ transactions had zero visibility into sales trends, product demand, and payment behavior — making pricing and inventory decisions entirely gut-driven.',
+    approach: [
+      'Cleaned raw dataset: handled missing values, corrected data types and formatting errors',
+      'Built core KPIs — total revenue, average order value, order count',
+      'Created pivot tables for product-wise, location-wise, and payment-wise breakdowns',
+      'Designed a single-page executive dashboard for at-a-glance performance tracking',
+    ],
+    insights: [
+      { metric: '20,107', label: 'total orders processed' },
+      { metric: '$9', label: 'average order value' },
+      { metric: '$60.5K', label: 'total revenue generated' },
+      { metric: '~70%', label: 'revenue from in-store orders' },
+    ],
+    impact: 'Enabled data-backed pricing decisions, identified coffee and sandwiches as revenue drivers for inventory prioritization, and revealed digital wallet dominance for payment strategy optimization.',
   },
 ];
 
@@ -188,6 +212,16 @@ function ProjectCard({ project, index }) {
             <ExternalLink size={16} /> Dashboard
           </a>
         )}
+        {project.liveSheet && (
+          <a
+            href={project.liveSheet}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+          >
+            <ExternalLink size={16} /> View Live Sheet
+          </a>
+        )}
       </div>
     </motion.div>
   );
@@ -214,7 +248,7 @@ export default function Projects() {
           <div className="w-16 h-1 bg-primary rounded-full mb-10" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

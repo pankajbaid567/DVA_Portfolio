@@ -70,7 +70,7 @@ export default function Hero() {
           </a>
           <a
             href="/Pankaj_Baid_Resume.pdf"
-            target="_blank"
+            download="Pankaj_Baid_Resume.pdf"
             className="px-8 py-3.5 rounded-xl border border-white/10 text-heading font-semibold text-sm hover:bg-white/5 transition-all"
           >
             Download Resume ↓
